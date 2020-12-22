@@ -1,0 +1,83 @@
+{
+    "name": "jwalker/message-client-bundle",
+    "license": "proprietary",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Justin Walker",
+            "email": "jusmark123@yahoo.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "StocksApiBundles\\/MessageClient\\": "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "StocksApiBundles\\MessageClient\\Fixtures\\": "tests/Fixtures",
+        "StocksApiBundles\\MessageClient\\Tests\\": "tests/Unit",
+        "App\\": "harness/"
+      }
+    },
+    "config": {
+      "optimize-autoloader": true,
+      "preferred-install": {
+          "*": "dist"
+      },
+      "sort-packages": true
+    },
+    "conflict": {
+      "symfony/symfony": "*"
+    },
+    "repositories": {
+      "repos": {
+        "type": "path",
+        "url": "./repos/*",
+        "options": {
+          "symlink": true
+        }
+      },
+      "packagist": {
+          "type": "composer",
+          "url": "https://repo.packagist.org/"
+      }
+    },
+    "require": {
+        "symfony/framework-bundle": "^5.1",
+        "symfony/console": "^5.1",
+        "symfony/serializer": "^5.1",
+        "symfony/yaml": "^5.1",
+        "ramsey/uuid": "^4.1",
+        "ext-json": "^1.7",
+        "bunny/bunny": "^0.4.3",
+        "phpstan/phpstan": "^0.12.57",
+        "symfony/process": "^5.1",
+        "queue-interop/amqp-interop": "^0.8.1"
+    },
+    "require-dev": {
+        "symfony/flex": "^1.10",
+        "symfony/expression-language": "^5.1",
+        "symfony/messenger": "^5.1",
+        "symfony/monolog-bundle": "^3.6",
+        "symfony/orm-pack": "^2.0",
+        "symfony/dotenv": "^5.1",
+        "ratchet/pawl": "^0.3.5",
+        "sensio/framework-extra-bundle": "^5.6",
+        "php-http/mock-client": "^1.4",
+        "phpunit/phpunit": "^9.4",
+        "behat/behat": "^3.8",
+        "friends-of-behat/mink-browserkit-driver": "^1.4",
+        "behatch/contexts": "^3.3",
+        "php-http/httplug-bundle": "^1.19",
+        "doctrine/annotations": "^1.11",
+        "phake/phake": "^3.1",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "api-platform/api-pack": "^1.3"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true
+        }
+    }
+}

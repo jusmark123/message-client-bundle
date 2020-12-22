@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+  stocks-api-lib-message-client-bundle-php:
+    image: 019621153437.dkr.ecr.us-west-2.amazonaws.com/php-fpm-nginx:latest
+    container_name: ${DOCKER_RUNNING_IMAGE_NAME}
+    ports:
+        - ${PHP_FPM_IMAGE_PORT}9001
+    volumes:
+      - .:/opt/app-root/src
+      - ./logs/symfony:/opt/app-root/src/var/log
+      - ./logs/nginx:/var/log/nginx
+    ports:
+      - ${NGINX_PORT}80
+    links:
+      - stocks-api-database
+    env_file:
+      - .env
+
+  stocks-api-lib-message-client-bundle-rabbitmq:
+    image: library/rabbitmq:3.8.3
+    container_name: ${DOCKER_RUNNING_IMAGE_NAME}-rabbitmq
+    volumes:
+      - ./docker/rabbitmq:/etc/rabbitmq
+    ports:
+      - 5672:5672
+      - ${DOCKER_RABBITMQ_MANAGEMENT_PORT}15672
+    healthcheck:
+      test:
+        - CMD
+        - rabbitmqctl
+        - status
